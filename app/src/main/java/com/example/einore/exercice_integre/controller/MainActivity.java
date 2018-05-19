@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.einore.exercice_integre.R;
 import com.example.einore.exercice_integre.model.User;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     else{
-
+                        Toast.makeText(getApplicationContext(),"Identification non valide",Toast.LENGTH_LONG).show();
                     }
 
 
