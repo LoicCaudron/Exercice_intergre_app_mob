@@ -8,6 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.einore.exercice_integre.R;
+import com.example.einore.exercice_integre.model.User;
+import com.example.einore.exercice_integre.model.UserBDD;
+
+import static android.text.TextUtils.isEmpty;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,15 +22,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Connection");
 
-        Button connect_button = (Button) findViewById(R.id.connect_button);
-        EditText username = (EditText) findViewById(R.id.username);
-        EditText code = (EditText) findViewById(R.id.code);
+        final Button connect_button = (Button) findViewById(R.id.connect_button);
+        final EditText usernameEntry = (EditText) findViewById(R.id.username);
+        final EditText codeEntry = (EditText) findViewById(R.id.code);
+
+        User user = new User ("Loic", 1234);
+
+        UserBDD userBdd = new UserBDD(this);
+        userBdd.openForWrite();
+        userBdd.insertUser (user);
+
 
         connect_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if(!isEmpty (usernameEntry) & !isEmpty(codeEntry)){
+
+                    String username = usernameEntry.getText().toString();
+                    int code = Integer.parseInt(codeEntry.getText().toString());
+
+
+                }
             }
         });
     }
+
+    private boolean isEmpty(EditText Text) {
+        if(Text.getText().toString().trim().length() >0)    // .trim() permet de retirer les blancs en début et fin de chaîne
+            return false;
+
+        return true;
+    }
+
 }

@@ -74,7 +74,7 @@ public class UserBDD {    //classe DAO
             c.close();
             return null;
         }
-        User user = new User();
+        User user = new User("Loic", 1234);
         user.setId(c.getInt(NUM_COL_ID));
         user.setName(c.getString(NUM_COL_NAME));
 
@@ -91,7 +91,7 @@ public class UserBDD {    //classe DAO
         }
         ArrayList<User> userList = new ArrayList<User> ();
         while (c.moveToNext()) {
-            User user = new User();
+            User user = new User("Loic", 1234);
             user.setId(c.getInt(NUM_COL_ID));
             user.setName(c.getString(NUM_COL_NAME));
 
