@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 String username = usernameEntry.getText().toString();
                 int code = Integer.parseInt(codeEntry.getText().toString());
 
-                if(!isEmpty (usernameEntry) & !isEmpty(codeEntry)){
+                if(0000<=code && code<=9999){
 
                     userBdd.openForRead();    //ouverture de la base de données
                     User user = userBdd.getUser(username,code);
@@ -58,15 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
+                else{
+                    Toast.makeText(getApplicationContext(),"Le code PIN doit être de 4 chiffres (ex:1234)",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
-    private boolean isEmpty(EditText Text) {
-        if(Text.getText().toString().trim().length() >0)    // .trim() permet de retirer les blancs en début et fin de chaîne
-            return false;
-
-        return true;
-    }
 
 }
