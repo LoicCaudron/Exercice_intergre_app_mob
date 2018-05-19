@@ -19,6 +19,16 @@ public class UserBDD {    //classe DAO
     private static final int NUM_COL_NAME = 1;
     private static final String COL_PIN = "PIN";
     private static final int NUM_COL_PIN = 2;
+    private static final String COL_T_MIN = "T_MIN";
+    private static final int NUM_COL_T_MIN = 3;
+    private static final String COL_T_MAX = "T_MAX";
+    private static final int NUM_COL_T_MAX = 4;
+    private static final String COL_HUMIDITY_MIN = "HUMIDITY_MIN";
+    private static final int NUM_COL_HUMIDITY_MIN = 5;
+    private static final String COL_HUMIDITY_MAX = "HUMIDITY_MAX";
+    private static final int NUM_COL_HUMIDITY_MAX = 6;
+    private static final String COL_BATTERY = "BATTERY";
+    private static final int NUM_COL_BATTERY = 7;
 
     private SQLiteDatabase bdd;
 
@@ -53,18 +63,22 @@ public class UserBDD {    //classe DAO
 
     public int updateUser(int id, User user) {
         ContentValues content = new ContentValues();
-        content.put(COL_NAME, user.getName());
+        content.put(COL_T_MIN, user.getT_min());
+        content.put(COL_T_MAX, user.getT_max());
+        content.put(COL_HUMIDITY_MIN, user.getHumidity_min());
+        content.put(COL_HUMIDITY_MAX, user.getHumidity_max());
+        content.put(COL_BATTERY, user.getBattery());
 
         return bdd.update(TABLE_USERS, content, COL_ID + " = " + id, null);
     }
 
-    public int removeUser(String name) {
+    public int removeUser(String name) {                                                            //sûrement à changer  !!!!!!!
         return bdd.delete(TABLE_USERS, COL_NAME + " = " + name, null);
     }
 
-    public User getUser(String name) {
+    public User getUser(String name, int pin) {
         Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME,
-                        COL_PIN }, COL_NAME + " LIKE \"" + name + "\"", null, null,
+                        COL_PIN }, COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + "LIKE \"" + pin, null, null,
                 null, COL_NAME);
         return cursorToUser(c);
     }

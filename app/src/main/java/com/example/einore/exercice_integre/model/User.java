@@ -7,9 +7,9 @@ public class User {
     private int pin;
     private float T_min;
     private float T_max;
-    private float Humidity;
+    private float Humidity_min;
+    private float Humidity_max;
     private float battery;
-    private String num;
 
 
     public User() {}
@@ -60,12 +60,20 @@ public class User {
         T_max = t_max;
     }
 
-    public float getHumidity() {
-        return Humidity;
+    public float getHumidity_min() {
+        return Humidity_min;
     }
 
-    public void setHumidity(float humidity) {
-        Humidity = humidity;
+    public void setHumidity_min(float humidity_min) {
+        Humidity_min = humidity_min;
+    }
+
+    public float getHumidity_max() {
+        return Humidity_max;
+    }
+
+    public void setHumidity_max(float humidity_max) {
+        Humidity_max = humidity_max;
     }
 
     public float getBattery() {
@@ -76,11 +84,4 @@ public class User {
         this.battery = battery;
     }
 
-    public String getNum() {
-        return num;
-    }
-
-    public void setNum(String num) {
-        this.num = num;
-    }
 }
