@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         //MODIFTEST
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Connection");
+        setTitle("Connexion");
 
         final Button connect_button = (Button) findViewById(R.id.connect_button);
         final EditText usernameEntry = (EditText) findViewById(R.id.username);
