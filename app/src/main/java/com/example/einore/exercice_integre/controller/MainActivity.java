@@ -15,6 +15,9 @@ import static android.text.TextUtils.isEmpty;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    UserBDD userBdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //MODIFTEST
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         User user = new User ("Loic", 1234);
 
-        UserBDD userBdd = new UserBDD(this);
+        userBdd = new UserBDD(this);
         userBdd.openForWrite();
         userBdd.insertUser (user);
 
@@ -37,10 +40,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String username = usernameEntry.getText().toString();
+                int code = Integer.parseInt(codeEntry.getText().toString());
+
                 if(!isEmpty (usernameEntry) & !isEmpty(codeEntry)){
 
-                    String username = usernameEntry.getText().toString();
-                    int code = Integer.parseInt(codeEntry.getText().toString());
+                    userBdd.openForRead();    //ouverture de la base de données
+                    User user = userBdd.getUser(username,code);
+
+                    if(user != null){  // si le getUser renvoie qqch (les entrées sont dans la BDD), on passe à l'activité suivante
+
+                    }
+                    else{
+
+                    }
 
 
                 }
