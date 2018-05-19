@@ -43,6 +43,28 @@ public class Main2Activity extends AppCompatActivity {
         battMax = findViewById(R.id.battMax);
 
 
+        try {
+            Bundle b = getIntent().getExtras();
+            if (b != null) {
+                id = (int) b.get("ID");
+            } else {
+                id = 0;
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
+        try {
+            userBdd = new UserBDD(Main2Activity.this);
+            userBdd.openForRead();
+            user = userBdd.getUser(id);
+            userBdd.close();
+        } catch (Exception e) {
+            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
 
     }
 

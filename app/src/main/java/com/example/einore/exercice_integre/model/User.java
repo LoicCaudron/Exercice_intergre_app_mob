@@ -9,7 +9,8 @@ public class User {
     private float T_max;
     private float Humidity_min;
     private float Humidity_max;
-    private float battery;
+    private float battery_min;
+    private float battery_max;
 
 
     public User() {}
@@ -76,12 +77,15 @@ public class User {
         Humidity_max = humidity_max;
     }
 
-    public float getBattery() {
-        return battery;
+    public float getBattery_min() {
+        return battery_min;
     }
 
-    public void setBattery(float battery) {
-        this.battery = battery;
+    public float getBattery_max() { return battery_max; }
+
+    public void setBattery_min(float battery) {
+        this.battery_min = battery;
     }
 
+    public void setBattery_max(float battery_max) { this.battery_max = battery_max; }
 }

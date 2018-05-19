@@ -27,8 +27,11 @@ public class UserBDD {    //classe DAO
     private static final int NUM_COL_HUMIDITY_MIN = 5;
     private static final String COL_HUMIDITY_MAX = "HUMIDITY_MAX";
     private static final int NUM_COL_HUMIDITY_MAX = 6;
-    private static final String COL_BATTERY = "BATTERY";
-    private static final int NUM_COL_BATTERY = 7;
+    private static final String COL_BATTERY_MIN = "BATTERY_MIN";
+    private static final int NUM_COL_BATTERY_MIN = 7;
+    private static final String COL_BATTERY_MAX = "BATTERY_MAX";
+    private static final int NUM_COL_BATTERY_MAX = 8;
+
 
     private SQLiteDatabase bdd;
 
@@ -67,13 +70,26 @@ public class UserBDD {    //classe DAO
         content.put(COL_T_MAX, user.getT_max());
         content.put(COL_HUMIDITY_MIN, user.getHumidity_min());
         content.put(COL_HUMIDITY_MAX, user.getHumidity_max());
-        content.put(COL_BATTERY, user.getBattery());
+        content.put(COL_BATTERY_MIN, user.getBattery_min());
+        content.put(COL_BATTERY_MAX, user.getBattery_max());
 
         return bdd.update(TABLE_USERS, content, COL_ID + " = " + id, null);
     }
 
     public int removeUser(String name) {                                                            //sûrement à changer  !!!!!!!
         return bdd.delete(TABLE_USERS, COL_NAME + " = " + name, null);
+    }
+
+
+    public User getUser(int id) {
+        Cursor c = bdd.query(TABLE_USERS,
+                new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX},
+                COL_ID + " = " + id,
+                null,
+                null,
+                null,
+                null);
+        return cursorToUser(c);
     }
 
     public User getUser(String name, int pin) {
