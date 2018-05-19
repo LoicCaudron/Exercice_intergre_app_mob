@@ -1,4 +1,4 @@
-package com.example.einore.exercice_integre;
+package com.example.einore.exercice_integre.model;
 
 public class User {
 

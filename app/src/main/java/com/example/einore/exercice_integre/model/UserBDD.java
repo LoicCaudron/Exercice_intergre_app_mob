@@ -1,4 +1,4 @@
-package com.example.einore.exercice_integre;
+package com.example.einore.exercice_integre.model;
 
 import android.content.ContentValues;
 import android.content.Context;
