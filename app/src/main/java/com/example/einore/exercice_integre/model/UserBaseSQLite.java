@@ -7,11 +7,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UserBaseSQLite extends SQLiteOpenHelper{
 
-    private static final String TABLE_LIVRES = "table_livres";
+    private static final String TABLE_USERS = "table_users";
     private static final String COL_ID = "ID";
     private static final String COL_NAME = "NAME";
 
-    private static final String CREATE_BDD = "CREATE TABLE " + TABLE_LIVRES + " (" +
+    private static final String CREATE_BDD = "CREATE TABLE " + TABLE_USERS + " (" +
             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NAME + " TEXT NOT NULL);";
 
     public UserBaseSQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -25,7 +25,7 @@ public class UserBaseSQLite extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE " + TABLE_LIVRES);
+        db.execSQL("DROP TABLE " + TABLE_USERS);
         onCreate(db);
     }
 }
