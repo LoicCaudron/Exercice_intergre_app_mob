@@ -44,21 +44,21 @@ public class UserBDD {
         return bdd;
     }
 
-    public long insertLivre(User user) {
+    public long insertUser(User user) {
         ContentValues content = new ContentValues();
         content.put(COL_NAME, user.getName());
 
         return bdd.insert(TABLE_USERS, null, content);
     }
 
-    public int updateLivre(int id, User user) {
+    public int updateUser(int id, User user) {
         ContentValues content = new ContentValues();
         content.put(COL_NAME, user.getName());
 
         return bdd.update(TABLE_USERS, content, COL_ID + " = " + id, null);
     }
 
-    public int removeLivre(String name) {
+    public int removeUser(String name) {
         return bdd.delete(TABLE_USERS, COL_NAME + " = " + name, null);
     }
 
