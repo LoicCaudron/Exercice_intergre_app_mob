@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-public class UserBDD {
+public class UserBDD {    //classe DAO
 
     private static final int VERSION = 1;
     private static final String NOM_BDD = "user.db";
