@@ -93,8 +93,7 @@ public class UserBDD {    //classe DAO
     }
 
     public User getUser(String name, int pin) {
-        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME,
-                        COL_PIN }, COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + " LIKE " + pin, null, null,
+        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX }, COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + " LIKE " + pin, null, null,
                 null, COL_NAME);
         return cursorToUser(c);
     }
