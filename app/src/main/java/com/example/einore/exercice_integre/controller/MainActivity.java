@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.einore.exercice_integre.R;
@@ -14,8 +13,6 @@ import com.example.einore.exercice_integre.model.User;
 import com.example.einore.exercice_integre.model.UserBDD;
 
 import java.util.ArrayList;
-
-import static android.text.TextUtils.isEmpty;
 
 
 //class permettant de se login à l'application
@@ -71,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if(user != null){  // si le getUser renvoie qqch (les entrées sont dans la BDD), on passe à l'activité suivante
 
-                            main2ActivityIntent = new Intent(MainActivity.this, Main2Activity.class);
+                            main2ActivityIntent = new Intent(MainActivity.this, SetActivity.class);
                             userBdd.close();
                             main2ActivityIntent.putExtra("ID", user.getId());
                             startActivity(main2ActivityIntent);
