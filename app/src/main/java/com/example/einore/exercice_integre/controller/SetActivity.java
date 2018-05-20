@@ -33,7 +33,7 @@ public class SetActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_activity);
-        setTitle("Conditions");
+        setTitle("Paramétrage");
 
         TextView textView = findViewById(R.id.message);
         String Hello = "Bonjour" + getIntent().getStringExtra("name")+" ! ";
