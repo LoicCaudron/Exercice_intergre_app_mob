@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //MODIFTEST
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Connexion");
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 String username = usernameEntry.getText().toString();
                 int code = Integer.parseInt(codeEntry.getText().toString());
 
-                if(0000<=code && code<=9999){
+                if(0001<=code && code<=9999){
 
                     userBdd.openForRead();    //ouverture de la base de données
                     User user = userBdd.getUser(username,code);
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
                         main2Activity = new Intent(MainActivity.this, Main2Activity.class);
                         userBdd.close();
+                        main2Activity.putExtra("ID", user.getId());
                         startActivity(main2Activity);
                     }
                     else{
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
-                //test
+
                 else{
                     Toast.makeText(getApplicationContext(),"Le code PIN doit être de 4 chiffres (ex:1234)",Toast.LENGTH_LONG).show();
                 }
