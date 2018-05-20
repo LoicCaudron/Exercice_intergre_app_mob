@@ -108,7 +108,7 @@ public class SetActivity extends AppCompatActivity {
 
                     checkActivity = new Intent(SetActivity.this, CheckActivity.class);
                     checkActivity.putExtra("ID", currentUser.getId());
-                    checkActivity.putExtra("PHONE", (Parcelable) phone_num);
+                    //checkActivity.putExtra("PHONE", (Parcelable) phone_num);
                     startActivity(checkActivity);
 
                 }
