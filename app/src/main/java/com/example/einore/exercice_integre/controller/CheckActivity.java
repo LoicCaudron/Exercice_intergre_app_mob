@@ -69,7 +69,8 @@ public class CheckActivity extends AppCompatActivity {
 
                     if(temp_check<temp_min){
                         String message = "Tourne un peu la vanne du radiateur. Il ne fait que " + temp_check + "°C";
-                        SmsManager.getDefault().sendTextMessage(phone_num, null, message, null, null );
+                        //SmsManager.getDefault().sendTextMessage(phone_num, null, message, null, null );
+                        sms(message);
                         Toast.makeText(CheckActivity.this, "test réussi",Toast.LENGTH_LONG).show();
                     }
 
@@ -102,7 +103,14 @@ public class CheckActivity extends AppCompatActivity {
                     Toast.makeText(CheckActivity.this, e.toString(),Toast.LENGTH_LONG).show();
                 }
 
+                
 
+            }
+
+            private void sms(String message) {
+                if(phone_num.length()>=4){
+                    SmsManager.getDefault().sendTextMessage(phone_num, null, message, null, null );
+                }
             }
 
             //private void sms(String message) {
@@ -112,4 +120,5 @@ public class CheckActivity extends AppCompatActivity {
             //}
         });
     }
+    
 }
