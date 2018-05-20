@@ -36,8 +36,7 @@ public class SetActivity extends AppCompatActivity {
         setTitle("Paramétrage");
 
         TextView textView = findViewById(R.id.message);
-        String Hello = "Bonjour" + currentUser.getName();
-        textView.setText(Hello);
+
 
         tempMin = findViewById(R.id.tempMin);
         tempMax = findViewById(R.id.tempMax);
@@ -63,6 +62,8 @@ public class SetActivity extends AppCompatActivity {
             userBdd = new UserBDD(SetActivity.this);
             userBdd.openForRead();
             currentUser = userBdd.getUser(id);
+            String Hello = "Bonjour" + currentUser.getName();
+            textView.setText(Hello);
             userBdd.close();
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
