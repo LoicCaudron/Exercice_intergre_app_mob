@@ -118,8 +118,7 @@ public class UserBDD {    //classe DAO
     }
 
     public ArrayList<User> getAllUsers() {
-        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME,
-                COL_PIN }, null, null, null, null, COL_NAME);
+        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX }, null, null, null, null, COL_NAME);
         if (c.getCount() == 0) {
             c.close();
             return null;
