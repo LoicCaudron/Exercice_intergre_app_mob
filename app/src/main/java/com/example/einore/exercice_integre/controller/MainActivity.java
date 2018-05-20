@@ -38,37 +38,45 @@ public class MainActivity extends AppCompatActivity {
         userBdd = new UserBDD(this);
         userBdd.openForWrite();
         userBdd.insertUser (user);
+        userBdd.close();
 
 
         connect_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String username = usernameEntry.getText().toString();
-                int code = Integer.parseInt(codeEntry.getText().toString());
+                try{
+                    String username = usernameEntry.getText().toString();
+                    int code = Integer.parseInt(codeEntry.getText().toString());
 
-                if(0001<=code && code<=9999){
+                    if(1000<=code && code<=9999){
 
-                    userBdd.openForRead();    //ouverture de la base de données
-                    User user = userBdd.getUser(username,code);
+                        userBdd.openForRead();    //ouverture de la base de données
+                        User user = userBdd.getUser(username,code);
 
-                    if(user != null){  // si le getUser renvoie qqch (les entrées sont dans la BDD), on passe à l'activité suivante
+                        if(user != null){  // si le getUser renvoie qqch (les entrées sont dans la BDD), on passe à l'activité suivante
 
-                        main2ActivityIntent = new Intent(MainActivity.this, Main2Activity.class);
-                        userBdd.close();
-                        main2ActivityIntent.putExtra("ID", user.getId());
-                        startActivity(main2ActivityIntent);
+                            main2ActivityIntent = new Intent(MainActivity.this, Main2Activity.class);
+                            userBdd.close();
+                            main2ActivityIntent.putExtra("ID", user.getId());
+                            startActivity(main2ActivityIntent);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Identification non valide",Toast.LENGTH_LONG).show();
+                        }
+
+
                     }
+
                     else{
-                        Toast.makeText(getApplicationContext(),"Identification non valide",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Le code PIN doit être de 4 chiffres (ex:1234)",Toast.LENGTH_LONG).show();
                     }
-
+                }
+                catch (Exception e){
+                    Toast.makeText(MainActivity.this,e.toString(),Toast.LENGTH_LONG).show();
 
                 }
 
-                else{
-                    Toast.makeText(getApplicationContext(),"Le code PIN doit être de 4 chiffres (ex:1234)",Toast.LENGTH_LONG).show();
-                }
             }
         });
     }
