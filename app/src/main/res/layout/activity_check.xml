@@ -36,10 +36,11 @@
     <EditText
         android:id="@+id/temp"
         android:layout_width="32dp"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/textView3"
         android:layout_marginStart="158dp"
+        android:layout_marginTop="-17dp"
         android:ems="10"
         android:inputType="numberDecimal" />
 
@@ -55,9 +56,10 @@
     <EditText
         android:id="@+id/hum"
         android:layout_width="32dp"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView4"
         android:layout_marginEnd="-158dp"
+        android:layout_marginTop="-17dp"
         android:layout_toStartOf="@+id/temp"
         android:ems="10"
         android:inputType="numberDecimal" />
@@ -74,8 +76,9 @@
     <EditText
         android:id="@+id/batt"
         android:layout_width="32dp"
-        android:layout_height="29dp"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView6"
+        android:layout_marginTop="-17dp"
         android:layout_toEndOf="@+id/valeurs"
         android:ems="10"
         android:inputType="numberDecimal" />
