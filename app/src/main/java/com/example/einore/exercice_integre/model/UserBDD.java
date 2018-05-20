@@ -143,6 +143,7 @@ public class UserBDD {    //classe DAO
             user.setBattery_max(c.getInt(NUM_COL_BATTERY_MAX));
 
             userList.add(user);
+
         }while (c.moveToNext());
         //c.close();
         return userList;
