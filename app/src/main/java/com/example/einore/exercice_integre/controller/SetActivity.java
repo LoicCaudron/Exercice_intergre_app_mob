@@ -36,7 +36,7 @@ public class SetActivity extends AppCompatActivity {
         setTitle("Conditions");
 
         TextView textView = findViewById(R.id.message);
-        String Hello = "Bonjour" + getIntent().getStringExtra("name")+" ! ";
+        String Hello = "Bonjour" + currentUser.getName();
         textView.setText(Hello);
 
         tempMin = findViewById(R.id.tempMin);
