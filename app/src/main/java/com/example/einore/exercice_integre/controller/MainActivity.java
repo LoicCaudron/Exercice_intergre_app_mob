@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<User> u = userBdd.getAllUsers();
             userBdd.close();
 
-            Toast.makeText(getApplicationContext(), u.size() ,Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, u.size() ,Toast.LENGTH_LONG).show();
         }
         catch(Exception e){
-            Toast.makeText(getApplicationContext(), e.toString() ,Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, e.toString() ,Toast.LENGTH_LONG).show();
         }
 
 
