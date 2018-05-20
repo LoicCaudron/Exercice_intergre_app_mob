@@ -60,6 +60,7 @@ public class UserBDD {    //classe DAO
     public long insertUser(User user) {
         ContentValues content = new ContentValues();
         content.put(COL_NAME, user.getName());
+        content.put (COL_PIN, user.getPin());
 
         return bdd.insert(TABLE_USERS, null, content);
     }
@@ -118,7 +119,8 @@ public class UserBDD {    //classe DAO
     }
 
     public ArrayList<User> getAllUsers() {
-        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX }, null, null, null, null, COL_NAME);
+        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX },
+                null, null, null, null, COL_NAME);
         if (c.getCount() == 0) {
             c.close();
             return null;
@@ -128,7 +130,6 @@ public class UserBDD {    //classe DAO
         do {
             User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
             user.setId(c.getInt(NUM_COL_ID));
-            user.setName(c.getString(NUM_COL_NAME));
             user.setT_max(c.getInt(NUM_COL_T_MAX));
             user.setT_min(c.getInt(NUM_COL_T_MIN));
             user.setHumidity_min(c.getInt(NUM_COL_HUMIDITY_MIN));

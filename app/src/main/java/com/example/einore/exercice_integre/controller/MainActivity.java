@@ -13,6 +13,8 @@ import com.example.einore.exercice_integre.R;
 import com.example.einore.exercice_integre.model.User;
 import com.example.einore.exercice_integre.model.UserBDD;
 
+import java.util.ArrayList;
+
 import static android.text.TextUtils.isEmpty;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
         userBdd.openForWrite();
         userBdd.insertUser(user);
         userBdd.close();
+        try{
+            userBdd.openForRead();
+            ArrayList<User> u = userBdd.getAllUsers();
+            userBdd.close();
+
+            Toast.makeText(getApplicationContext(), u.size() ,Toast.LENGTH_LONG).show();
+        }
+        catch(Exception e){
+            Toast.makeText(getApplicationContext(), e.toString() ,Toast.LENGTH_LONG).show();
+        }
 
 
         connect_button.setOnClickListener(new View.OnClickListener() {
