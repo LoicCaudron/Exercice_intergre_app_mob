@@ -1,5 +1,6 @@
 package com.example.einore.exercice_integre.controller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     UserBDD userBdd;
+
+    Intent main2Activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
                     if(user != null){  // si le getUser renvoie qqch (les entrées sont dans la BDD), on passe à l'activité suivante
 
+                        main2Activity = new Intent(MainActivity.this, Main2Activity.class);
+                        userBdd.close();
+                        startActivity(main2Activity);
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"Identification non valide",Toast.LENGTH_LONG).show();

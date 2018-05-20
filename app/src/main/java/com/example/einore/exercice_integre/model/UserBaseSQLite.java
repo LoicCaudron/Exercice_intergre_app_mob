@@ -15,7 +15,8 @@ public class UserBaseSQLite extends SQLiteOpenHelper{
     private static final String COL_T_MAX = "T_MAX";
     private static final String COL_HUMIDITY_MIN = "HUMIDITY_MIN";
     private static final String COL_HUMIDITY_MAX = "HUMIDITY_MAX";
-    private static final String COL_BATTERY = "BATTERY";
+    private static final String COL_BATTERY_MIN = "BATTERY_MIN";
+    private static final String COL_BATTERY_MAX = "BATTERY_MAX";
 
 
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_USERS + " (" +
@@ -26,7 +27,8 @@ public class UserBaseSQLite extends SQLiteOpenHelper{
             COL_T_MAX + " FLOAT, " +
             COL_HUMIDITY_MIN + " FLOAT, " +
             COL_HUMIDITY_MAX + " FLOAT, " +
-            COL_BATTERY + " FLOAT);";
+            COL_BATTERY_MIN + " FLOAT, " +
+            COL_BATTERY_MAX + " FLOAT);";
 
     public UserBaseSQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super (context, name, factory, version);
