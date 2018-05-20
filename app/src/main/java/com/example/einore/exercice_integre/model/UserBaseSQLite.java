@@ -24,7 +24,7 @@ public class UserBaseSQLite extends SQLiteOpenHelper{
             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_NAME + " TEXT NOT NULL, " +
             COL_PIN + " INTEGER NOT NULL, " +
-            COL_PHONE + " STRING, " +
+            COL_PHONE + " TEXT, " +
             COL_T_MIN + " FLOAT, " +
             COL_T_MAX + " FLOAT, " +
             COL_HUMIDITY_MIN + " FLOAT, " +
