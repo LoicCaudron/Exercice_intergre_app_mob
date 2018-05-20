@@ -107,17 +107,12 @@ public class CheckActivity extends AppCompatActivity {
 
             }
 
+
             private void sms(String message) {
-                if(phone_num.length()>=4){
+                if(phone_num.length()>= 4){
                     SmsManager.getDefault().sendTextMessage(phone_num, null, message, null, null );
                 }
             }
-
-            //private void sms(String message) {
-                //if(phone_num.length()>= 4){
-                //    SmsManager.getDefault().sendTextMessage(phone_num, null, message, null, null );
-               // }
-            //}
         });
     }
     
