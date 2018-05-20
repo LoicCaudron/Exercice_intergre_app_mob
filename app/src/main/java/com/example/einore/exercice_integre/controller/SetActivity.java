@@ -1,5 +1,7 @@
 package com.example.einore.exercice_integre.controller;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +22,14 @@ public class SetActivity extends AppCompatActivity {
     EditText humMax;
     EditText battMin;
     EditText battMax;
+    EditText phone_num;
     Button save;
 
     UserBDD userBdd;
     int id;
     User currentUser;
 
-    // Intent CheckActivity;
+    Intent checkActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class SetActivity extends AppCompatActivity {
         humMax = findViewById(R.id.humMax);
         battMin = findViewById(R.id.battMax);
         battMax = findViewById(R.id.battMax);
+        phone_num = findViewById(R.id.numero);
 
 
         try {
@@ -101,11 +105,12 @@ public class SetActivity extends AppCompatActivity {
                     userBdd.updateUser(currentUser.getId(), currentUser);
                     userBdd.close();
 
-                    /*
-                    CheckActivity = new Intent(SetActivity.this, CheckActivity.class);
-                    CheckActivity.putExtra("ID", currentUser.getId());
-                    startActivity(CheckActivity);
-                    */
+
+                    checkActivity = new Intent(SetActivity.this, CheckActivity.class);
+                    checkActivity.putExtra("ID", currentUser.getId());
+                    checkActivity.putExtra("PHONE", (Parcelable) phone_num);
+                    startActivity(checkActivity);
+
                 }
 
                 else{
