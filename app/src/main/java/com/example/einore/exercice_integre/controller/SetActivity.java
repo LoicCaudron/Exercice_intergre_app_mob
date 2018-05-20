@@ -66,7 +66,7 @@ public class SetActivity extends AppCompatActivity {
             userBdd = new UserBDD(SetActivity.this);
             userBdd.openForRead();
             currentUser = userBdd.getUser(id);
-            String Hello = "Bonjour" + currentUser.getName();
+            String Hello = "Bonjour " + currentUser.getName();
             textView.setText(Hello);
             userBdd.close();
         } catch (Exception e) {
