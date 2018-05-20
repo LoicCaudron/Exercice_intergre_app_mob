@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     UserBDD userBdd;
 
-    Intent main2ActivityIntent;
+    Intent setActivityIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if(user != null){  // si le getUser renvoie qqch (les entrées sont dans la BDD), on passe à l'activité suivante
 
-                            main2ActivityIntent = new Intent(MainActivity.this, SetActivity.class);
+                            setActivityIntent = new Intent(MainActivity.this, SetActivity.class);
                             userBdd.close();
-                            main2ActivityIntent.putExtra("ID", user.getId());
-                            startActivity(main2ActivityIntent);
+                            setActivityIntent.putExtra("ID", user.getId());
+                            startActivity(setActivityIntent);
                         }
                         else{
                             Toast.makeText(getApplicationContext(),"Identification non valide",Toast.LENGTH_LONG).show();

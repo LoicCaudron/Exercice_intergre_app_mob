@@ -45,7 +45,7 @@ public class SetActivity extends AppCompatActivity {
         tempMax = findViewById(R.id.tempMax);
         humMin = findViewById(R.id.humMin);
         humMax = findViewById(R.id.humMax);
-        battMin = findViewById(R.id.battMax);
+        battMin = findViewById(R.id.battMin);
         battMax = findViewById(R.id.battMax);
         phone_num = findViewById(R.id.numero);
 
