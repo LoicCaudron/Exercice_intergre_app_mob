@@ -25,11 +25,11 @@ public class CheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_check);
         setTitle("Vérification");
 
-        final EditText temperature = (EditText) findViewById();
-        final EditText humidity = (EditText) findViewById();
-        final EditText battery = (EditText) findViewById();
+        final EditText temperature = (EditText) findViewById(R.id.temp);
+        final EditText humidity = (EditText) findViewById(R.id.hum);
+        final EditText battery = (EditText) findViewById(R.id.batt);
 
-        Button check = (Button) findViewById();
+        Button check = (Button) findViewById(R.id.verifier);
 
         Bundle bundle= getIntent().getExtras();
         if(bundle != null){
