@@ -38,7 +38,7 @@ public class SetActivity extends AppCompatActivity {
         setContentView(R.layout.set_activity);
         setTitle("Paramétrage");
 
-        TextView textView = findViewById(R.id.message);
+        TextView textView = findViewById(R.id.valeurs);
 
 
         tempMin = findViewById(R.id.tempMin);
