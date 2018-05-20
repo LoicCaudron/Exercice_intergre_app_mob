@@ -1,5 +1,6 @@
 package com.example.einore.exercice_integre.controller;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -12,6 +13,8 @@ import com.example.einore.exercice_integre.R;
 import com.example.einore.exercice_integre.model.User;
 import com.example.einore.exercice_integre.model.UserBDD;
 
+
+
 public class CheckActivity extends AppCompatActivity {
 
     User user;
@@ -19,6 +22,7 @@ public class CheckActivity extends AppCompatActivity {
 
     int id;
     String phone_num;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
