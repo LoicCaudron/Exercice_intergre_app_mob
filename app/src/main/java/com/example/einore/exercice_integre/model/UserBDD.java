@@ -94,7 +94,7 @@ public class UserBDD {    //classe DAO
 
     public User getUser(String name, int pin) {
         Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME,
-                        COL_PIN }, COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + "LIKE " + pin, null, null,
+                        COL_PIN }, COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + " LIKE " + pin, null, null,
                 null, COL_NAME);
         return cursorToUser(c);
     }
@@ -104,9 +104,15 @@ public class UserBDD {    //classe DAO
             c.close();
             return null;
         }
-        User user = new User("Loic", 1234);
+        User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
         user.setId(c.getInt(NUM_COL_ID));
         user.setName(c.getString(NUM_COL_NAME));
+        user.setT_max(c.getInt(NUM_COL_T_MAX));
+        user.setT_min(c.getInt(NUM_COL_T_MIN));
+        user.setHumidity_min(c.getInt(NUM_COL_HUMIDITY_MIN));
+        user.setHumidity_max(c.getInt(NUM_COL_HUMIDITY_MAX));
+        user.setBattery_min(c.getInt(NUM_COL_BATTERY_MIN));
+        user.setBattery_max(c.getInt(NUM_COL_BATTERY_MAX));
 
         c.close();
         return user;
@@ -121,9 +127,15 @@ public class UserBDD {    //classe DAO
         }
         ArrayList<User> userList = new ArrayList<User> ();
         while (c.moveToNext()) {
-            User user = new User("Loic", 1234);
+            User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
             user.setId(c.getInt(NUM_COL_ID));
             user.setName(c.getString(NUM_COL_NAME));
+            user.setT_max(c.getInt(NUM_COL_T_MAX));
+            user.setT_min(c.getInt(NUM_COL_T_MIN));
+            user.setHumidity_min(c.getInt(NUM_COL_HUMIDITY_MIN));
+            user.setHumidity_max(c.getInt(NUM_COL_HUMIDITY_MAX));
+            user.setBattery_min(c.getInt(NUM_COL_BATTERY_MIN));
+            user.setBattery_max(c.getInt(NUM_COL_BATTERY_MAX));
 
             userList.add(user);
         }
