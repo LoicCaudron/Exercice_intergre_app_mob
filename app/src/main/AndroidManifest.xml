@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.SetActivity"></activity>
+        <activity android:name=".controller.SetActivity" />
+        <activity android:name=".controller.CheckActivity"></activity>
     </application>
 
 </manifest>
