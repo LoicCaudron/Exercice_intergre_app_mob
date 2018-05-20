@@ -107,7 +107,6 @@ public class CheckActivity extends AppCompatActivity {
                     Toast.makeText(CheckActivity.this, e.toString(),Toast.LENGTH_LONG).show();
                 }
 
-                
 
             }
 

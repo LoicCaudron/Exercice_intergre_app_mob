@@ -20,9 +20,11 @@
         </activity>
         <activity android:name=".controller.SetActivity" />
         <activity android:name=".controller.CheckActivity">
+            <receiver android:name=".CheckActivity">
                 <intent-filter>
                     <action android:name="android.provider.Telephony.SMS_RECEIVED" />
                 </intent-filter>
+        </receiver>
         </activity>
     </application>
 
