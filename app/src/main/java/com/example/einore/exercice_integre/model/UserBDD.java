@@ -74,7 +74,7 @@ public class UserBDD {    //classe DAO
         content.put(COL_BATTERY_MIN, user.getBattery_min());
         content.put(COL_BATTERY_MAX, user.getBattery_max());
 
-        return bdd.update(TABLE_USERS, content, COL_ID + " = " + id, null);
+        return bdd.update(TABLE_USERS, content, COL_ID + " = " + user.getId(), null);
     }
 
     public int removeUser(String name) {                                                            //sûrement à changer  !!!!!!!
@@ -104,9 +104,9 @@ public class UserBDD {    //classe DAO
             c.close();
             return null;
         }
+        c.moveToFirst();
         User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
         user.setId(c.getInt(NUM_COL_ID));
-        user.setName(c.getString(NUM_COL_NAME));
         user.setT_max(c.getInt(NUM_COL_T_MAX));
         user.setT_min(c.getInt(NUM_COL_T_MIN));
         user.setHumidity_min(c.getInt(NUM_COL_HUMIDITY_MIN));
@@ -139,7 +139,7 @@ public class UserBDD {    //classe DAO
 
             userList.add(user);
         }while (c.moveToNext());
-        c.close();
+        //c.close();
         return userList;
     }
 }

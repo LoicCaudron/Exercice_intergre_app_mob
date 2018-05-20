@@ -17,6 +17,9 @@ import java.util.ArrayList;
 
 import static android.text.TextUtils.isEmpty;
 
+
+//class permettant de se login à l'application
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<User> u = userBdd.getAllUsers();
             userBdd.close();
 
-            Toast.makeText(MainActivity.this, u.size() ,Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, u.size() ,Toast.LENGTH_LONG).show();
         }
         catch(Exception e){
             Toast.makeText(MainActivity.this, e.toString() ,Toast.LENGTH_LONG).show();
