@@ -93,8 +93,8 @@ public class UserBDD {    //classe DAO
     }
 
     public User getUser(String name, int pin) {
-        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX }, COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + " LIKE " + pin, null, null,
-                null, COL_NAME);
+        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX },
+                COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + " = " + pin, null, null,null, COL_NAME);
         return cursorToUser(c);
     }
 
@@ -125,7 +125,8 @@ public class UserBDD {    //classe DAO
             return null;
         }
         ArrayList<User> userList = new ArrayList<User> ();
-        while (c.moveToNext()) {
+        c.moveToFirst();
+        do {
             User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
             user.setId(c.getInt(NUM_COL_ID));
             user.setName(c.getString(NUM_COL_NAME));
@@ -137,7 +138,7 @@ public class UserBDD {    //classe DAO
             user.setBattery_max(c.getInt(NUM_COL_BATTERY_MAX));
 
             userList.add(user);
-        }
+        }while (c.moveToNext());
         c.close();
         return userList;
     }

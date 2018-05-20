@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         userBdd = new UserBDD(this);
         userBdd.openForWrite();
-        userBdd.insertUser (user);
+        userBdd.insertUser(user);
         userBdd.close();
 
 
