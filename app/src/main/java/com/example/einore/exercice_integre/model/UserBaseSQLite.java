@@ -11,6 +11,7 @@ public class UserBaseSQLite extends SQLiteOpenHelper{
     private static final String COL_ID = "ID";
     private static final String COL_NAME = "NAME";
     private static final String COL_PIN = "PIN";
+    private static final String COL_PHONE = "PHONE";
     private static final String COL_T_MIN = "T_MIN";
     private static final String COL_T_MAX = "T_MAX";
     private static final String COL_HUMIDITY_MIN = "HUMIDITY_MIN";
@@ -23,6 +24,7 @@ public class UserBaseSQLite extends SQLiteOpenHelper{
             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COL_NAME + " TEXT NOT NULL, " +
             COL_PIN + " INTEGER NOT NULL, " +
+            COL_PHONE + " FLOAT, " +
             COL_T_MIN + " FLOAT, " +
             COL_T_MAX + " FLOAT, " +
             COL_HUMIDITY_MIN + " FLOAT, " +

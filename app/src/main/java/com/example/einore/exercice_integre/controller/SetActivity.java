@@ -79,15 +79,18 @@ public class SetActivity extends AppCompatActivity {
             public void onClick(View v) {
                 float tempmin, tempmax, hummin, hummax;
                 int battmin, battmax;
+                String num;
 
                 try{
 
+                    num = phone_num.getText().toString();
                     tempmin = Float.parseFloat(tempMin.getText().toString());
                     tempmax = Float.parseFloat(tempMax.getText().toString());
                     hummin = Float.parseFloat(humMin.getText().toString());
                     hummax = Float.parseFloat(humMax.getText().toString());
                     battmin = Integer.parseInt(battMin.getText().toString());
                     battmax = Integer.parseInt(battMax.getText().toString());
+
                 } catch (Exception exception) {
                     Toast.makeText(SetActivity.this, "Veuillez vérifier les données entrées !", Toast.LENGTH_SHORT).show();
                     return;
@@ -95,6 +98,7 @@ public class SetActivity extends AppCompatActivity {
 
                 if(hummin >= 0 && hummin <=100 && hummax >=0 && hummax <=100 && battmin >=0 && battmin <= 100 && battmax >=0 && battmax <= 100){
 
+                    currentUser.setPhone(num);
                     currentUser.setT_min(tempmin);
                     currentUser.setT_max(tempmax);
                     currentUser.setHumidity_min(hummin);

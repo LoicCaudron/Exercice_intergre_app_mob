@@ -34,7 +34,7 @@ public class CheckActivity extends AppCompatActivity {
         Bundle bundle= getIntent().getExtras();
         if(bundle != null){
             id = (int) bundle.get("ID");
-            phone_num = (String) bundle.get("PHONE");
+            //phone_num = (String) bundle.getParcelable("PHONE");
         }
         else{
             id = 0;
@@ -52,6 +52,8 @@ public class CheckActivity extends AppCompatActivity {
                 float temp_min,temp_max,humidity_min, humidity_max, battery_min, battery_max;
                 float temp_check, humidity_check, battery_check;
 
+
+                phone_num = user.getPhone();
                 temp_min = user.getT_min();
                 temp_max = user.getT_max();
                 humidity_min = user.getHumidity_min();

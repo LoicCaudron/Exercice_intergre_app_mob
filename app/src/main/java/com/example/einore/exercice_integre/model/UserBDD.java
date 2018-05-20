@@ -19,18 +19,20 @@ public class UserBDD {    //classe DAO
     private static final int NUM_COL_NAME = 1;
     private static final String COL_PIN = "PIN";
     private static final int NUM_COL_PIN = 2;
+    private static final String COL_PHONE = "PHONE";
+    private static final int NUM_COL_PHONE = 3;
     private static final String COL_T_MIN = "T_MIN";
-    private static final int NUM_COL_T_MIN = 3;
+    private static final int NUM_COL_T_MIN = 4;
     private static final String COL_T_MAX = "T_MAX";
-    private static final int NUM_COL_T_MAX = 4;
+    private static final int NUM_COL_T_MAX = 5;
     private static final String COL_HUMIDITY_MIN = "HUMIDITY_MIN";
-    private static final int NUM_COL_HUMIDITY_MIN = 5;
+    private static final int NUM_COL_HUMIDITY_MIN = 6;
     private static final String COL_HUMIDITY_MAX = "HUMIDITY_MAX";
-    private static final int NUM_COL_HUMIDITY_MAX = 6;
+    private static final int NUM_COL_HUMIDITY_MAX = 7;
     private static final String COL_BATTERY_MIN = "BATTERY_MIN";
-    private static final int NUM_COL_BATTERY_MIN = 7;
+    private static final int NUM_COL_BATTERY_MIN =8;
     private static final String COL_BATTERY_MAX = "BATTERY_MAX";
-    private static final int NUM_COL_BATTERY_MAX = 8;
+    private static final int NUM_COL_BATTERY_MAX = 9;
 
 
     private SQLiteDatabase bdd;
@@ -67,6 +69,7 @@ public class UserBDD {    //classe DAO
 
     public int updateUser(int id, User user) {
         ContentValues content = new ContentValues();
+        content.put(COL_PHONE, user.getPhone());
         content.put(COL_T_MIN, user.getT_min());
         content.put(COL_T_MAX, user.getT_max());
         content.put(COL_HUMIDITY_MIN, user.getHumidity_min());
@@ -77,14 +80,14 @@ public class UserBDD {    //classe DAO
         return bdd.update(TABLE_USERS, content, COL_ID + " = " + user.getId(), null);
     }
 
-    public int removeUser(String name) {                                                            //sûrement à changer  !!!!!!!
+    public int removeUser(String name) {
         return bdd.delete(TABLE_USERS, COL_NAME + " = " + name, null);
     }
 
 
     public User getUser(int id) {
         Cursor c = bdd.query(TABLE_USERS,
-                new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX},
+                new String[] { COL_ID, COL_NAME, COL_PIN, COL_PHONE, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX},
                 COL_ID + " = " + id,
                 null,
                 null,
@@ -94,7 +97,7 @@ public class UserBDD {    //classe DAO
     }
 
     public User getUser(String name, int pin) {
-        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX },
+        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_PHONE, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX },
                 COL_NAME + " LIKE \"" + name + "\" AND " + COL_PIN + " = " + pin, null, null,null, COL_NAME);
         return cursorToUser(c);
     }
@@ -107,6 +110,7 @@ public class UserBDD {    //classe DAO
         c.moveToFirst();
         User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
         user.setId(c.getInt(NUM_COL_ID));
+        user.setPhone(c.getString(NUM_COL_PHONE));
         user.setT_max(c.getInt(NUM_COL_T_MAX));
         user.setT_min(c.getInt(NUM_COL_T_MIN));
         user.setHumidity_min(c.getInt(NUM_COL_HUMIDITY_MIN));
@@ -119,7 +123,7 @@ public class UserBDD {    //classe DAO
     }
 
     public ArrayList<User> getAllUsers() {
-        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX },
+        Cursor c = bdd.query(TABLE_USERS, new String[] { COL_ID, COL_NAME, COL_PIN, COL_PHONE, COL_T_MIN, COL_T_MAX, COL_HUMIDITY_MIN, COL_HUMIDITY_MAX, COL_BATTERY_MIN, COL_BATTERY_MAX },
                 null, null, null, null, COL_NAME);
         if (c.getCount() == 0) {
             c.close();
@@ -130,6 +134,7 @@ public class UserBDD {    //classe DAO
         do {
             User user = new User(c.getString(NUM_COL_NAME), c.getInt(NUM_COL_PIN));
             user.setId(c.getInt(NUM_COL_ID));
+            user.setPhone(c.getString(NUM_COL_PHONE));
             user.setT_max(c.getInt(NUM_COL_T_MAX));
             user.setT_min(c.getInt(NUM_COL_T_MIN));
             user.setHumidity_min(c.getInt(NUM_COL_HUMIDITY_MIN));

@@ -5,6 +5,7 @@ public class User {
     private int id;
     private String name;
     private int pin;
+    private String phone;
     private float T_min;
     private float T_max;
     private float Humidity_min;
@@ -43,6 +44,14 @@ public class User {
 
     public void setPin(int pin) {
         this.pin = pin;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public float getT_min() {
