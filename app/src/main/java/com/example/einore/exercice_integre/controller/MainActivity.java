@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         User user = new User ("Loic", 1234);
 
         userBdd = new UserBDD(this);
-        userBdd.openForWrite(); 
+        userBdd.openForWrite();
         userBdd.insertUser(user);
         userBdd.close();
         try{
